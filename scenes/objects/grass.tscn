@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bex7jkxsach1"]
+
+[ext_resource type="PackedScene" uid="uid://d3ewxabal485s" path="res://models/kenney_nature-kit/glb/ground_grass.glb" id="1_mseg1"]
+
+[node name="grass" unique_id=88163756 instance=ExtResource("1_mseg1")]

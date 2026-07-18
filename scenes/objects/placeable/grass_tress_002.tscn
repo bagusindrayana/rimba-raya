@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://chjx2u13nen2r"]
+
+[ext_resource type="PackedScene" uid="uid://bex7jkxsach1" path="res://scenes/objects/grass.tscn" id="1_5civy"]
+[ext_resource type="PackedScene" uid="uid://dvnnt3cox0i66" path="res://models/kenney_nature-kit/glb/tree_blocks.glb" id="2_bonce"]
+
+[node name="grass_tress_002" type="Node3D" unique_id=10478127]
+
+[node name="grass" parent="." unique_id=88163756 instance=ExtResource("1_5civy")]
+
+[node name="tree_blocks2" parent="." unique_id=946073508 instance=ExtResource("2_bonce")]

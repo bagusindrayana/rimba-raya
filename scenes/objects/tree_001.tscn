@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bhn2cdg6tsy68"]
+
+[ext_resource type="PackedScene" uid="uid://dvv1mytwp4x4a" path="res://models/kenney_nature-kit/glb/tree_default.glb" id="1_nlku8"]
+
+[node name="tree_default2" unique_id=2118893303 instance=ExtResource("1_nlku8")]
