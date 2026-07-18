@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bus4732mwltp6"]
+
+[ext_resource type="Texture2D" uid="uid://dxqg4l0lr26np" path="res://models/kenney_nature-kit/Side/tree_fat.png" id="1_qerbv"]
+
+[node name="TextureRect" type="TextureRect" unique_id=933423487]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.5
+offset_top = -52.5
+offset_right = 34.5
+offset_bottom = 52.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("1_qerbv")

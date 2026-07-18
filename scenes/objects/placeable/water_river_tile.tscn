@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dgr1juidxa7gx"]
+
+[ext_resource type="PackedScene" uid="uid://hkp1ywwqeonn" path="res://models/kenney_nature-kit/glb/ground_riverTile.glb" id="1_xu5lt"]
+
+[node name="water_river_tile" type="Node3D" unique_id=2024735005]
+
+[node name="ground_riverTile2" parent="." unique_id=464982138 instance=ExtResource("1_xu5lt")]

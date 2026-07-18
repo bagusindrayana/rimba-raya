@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://dno73akdrqkkx"]
 
 [ext_resource type="Script" uid="uid://dqlnvbqqbywxv" path="res://scripts/CameraController.gd" id="1_kqs1s"]
+[ext_resource type="Texture2D" uid="uid://clcg8qgd8obut" path="res://ui/kenney_ui-pack-pixel-adventure/Tiles/Large tiles/Thin outline/tile_0008.png" id="2_ygioq"]
 [ext_resource type="Script" uid="uid://kqlefc8nyhqo" path="res://scripts/BuilderController.gd" id="3_0uv0p"]
+[ext_resource type="PackedScene" uid="uid://bus4732mwltp6" path="res://scenes/reward_indicator.tscn" id="3_pdh0q"]
 [ext_resource type="Script" uid="uid://bha7wmbi5fgm" path="res://scripts/Structure.gd" id="4_b3faq"]
 [ext_resource type="PackedScene" uid="uid://y5bjh0jg37e" path="res://scenes/objects/placeable/grass_tree_001.tscn" id="4_ygioq"]
 [ext_resource type="PackedScene" uid="uid://chjx2u13nen2r" path="res://scenes/objects/placeable/grass_tress_002.tscn" id="5_b3faq"]
-[ext_resource type="PackedScene" uid="uid://1ikiwbd6jum6" path="res://models/kenney_nature-kit/glb/tree_default_dark.glb" id="7_h1bdy"]
+[ext_resource type="PackedScene" uid="uid://dgr1juidxa7gx" path="res://scenes/objects/placeable/water_river_tile.tscn" id="6_ygioq"]
 [ext_resource type="Texture2D" uid="uid://cmrgov8g44hg8" path="res://ui/kenney_cursor-pixel-pack/Tiles/tile_0064.png" id="8_b3faq"]
 [ext_resource type="Texture2D" uid="uid://dbmxxrpeppplc" path="res://ui/kenney_cursor-pixel-pack/Tiles/tile_0066.png" id="9_ygioq"]
 
@@ -27,19 +29,13 @@ sky = SubResource("Sky_32lhk")
 [sub_resource type="Resource" id="Resource_7c4bj"]
 script = ExtResource("4_b3faq")
 model = ExtResource("4_ygioq")
-point = 100
+point = 10
 metadata/_custom_type_script = "uid://bha7wmbi5fgm"
 
-[sub_resource type="Resource" id="Resource_nrtoj"]
+[sub_resource type="Resource" id="Resource_pdh0q"]
 script = ExtResource("4_b3faq")
-model = ExtResource("5_b3faq")
-point = 100
-metadata/_custom_type_script = "uid://bha7wmbi5fgm"
-
-[sub_resource type="Resource" id="Resource_i4b1j"]
-script = ExtResource("4_b3faq")
-model = ExtResource("7_h1bdy")
-point = 100
+model = ExtResource("6_ygioq")
+point = 20
 metadata/_custom_type_script = "uid://bha7wmbi5fgm"
 
 [sub_resource type="MeshLibrary" id="MeshLibrary_b3faq"]
@@ -76,8 +72,9 @@ environment = SubResource("Environment_7g83o")
 [node name="CameraController" type="Node3D" parent="." unique_id=1503993403]
 transform = Transform3D(1, 0, 0, 0, 0.6425068, 0.76628, 0, -0.76628, 0.6425068, 0, 3.0997324, 0)
 script = ExtResource("1_kqs1s")
-min_zoom = 5.0
-max_zoom = 50.0
+inital_zoom = 6.0
+min_zoom = 3.0
+max_zoom = 20.0
 
 [node name="SelectorContainer" type="Node3D" parent="CameraController" unique_id=1159539747]
 transform = Transform3D(1, 0, 0, 0, 0.6425068, -0.76628, 0, 0.76628, 0.6425068, 0, -1.9915991, -2.375263)
@@ -87,17 +84,70 @@ transform = Transform3D(1, 0, 0, 0, 0.6425068, -0.76628, 0, 0.76628, 0.6425068, 
 [node name="CanvasLayer" type="CanvasLayer" parent="CameraController" unique_id=2118247632]
 
 [node name="Label" type="Label" parent="CameraController/CanvasLayer" unique_id=607472278]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Point :"
 
-[node name="BuilderController" type="Node3D" parent="." unique_id=1099927626 node_paths=PackedStringArray("selector", "selector_container", "view_camera", "point_display")]
+[node name="Control" type="Control" parent="CameraController/CanvasLayer" unique_id=1168035347]
+clip_contents = true
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -40.0
+offset_right = 100.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="fillProgress" type="ColorRect" parent="CameraController/CanvasLayer/Control" unique_id=2122013783]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -15.0
+offset_right = 196.0
+offset_bottom = 15.0
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0, 0.5)
+color = Color(0.3032554, 0.77777106, 0.5569761, 1)
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="CameraController/CanvasLayer/Control" unique_id=1674368350]
+texture_filter = 1
+clip_contents = true
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("2_ygioq")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="BuilderController" type="Node3D" parent="." unique_id=1099927626 node_paths=PackedStringArray("canvas_layer", "selector", "selector_container", "view_camera", "point_indicator_control", "point_indicator")]
 script = ExtResource("3_0uv0p")
-structures = Array[ExtResource("4_b3faq")]([SubResource("Resource_7c4bj"), SubResource("Resource_nrtoj"), SubResource("Resource_i4b1j")])
+canvas_layer = NodePath("../CameraController/CanvasLayer")
+reward_indicator = ExtResource("3_pdh0q")
+structures = Array[ExtResource("4_b3faq")]([SubResource("Resource_7c4bj"), SubResource("Resource_pdh0q")])
 selector = NodePath("../Selector")
 selector_container = NodePath("../CameraController/SelectorContainer")
 view_camera = NodePath("../CameraController/Camera")
-point_display = NodePath("../CameraController/CanvasLayer/Label")
+point_indicator_control = NodePath("../CameraController/CanvasLayer/Control")
+point_indicator = NodePath("../CameraController/CanvasLayer/Control/fillProgress")
 
 [node name="GridMap" type="GridMap" parent="." unique_id=623106909]
 mesh_library = SubResource("MeshLibrary_b3faq")
@@ -105,26 +155,25 @@ cell_size = Vector3(1, 1, 1)
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Selector" type="Node3D" parent="." unique_id=828901039]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Selector" unique_id=1278592268]
 visible = false
 mesh = SubResource("PlaneMesh_pdh0q")
 
 [node name="Corner" type="MeshInstance3D" parent="Selector" unique_id=1542571019]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.5, 0, -0.5)
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.3, 0, -0.3)
 mesh = SubResource("PlaneMesh_h1bdy")
 
 [node name="Corner2" type="MeshInstance3D" parent="Selector" unique_id=520660992]
-transform = Transform3D(5.9624403e-09, 0, -0.5, 0, 0.5, 0, 0.5, 0, 5.9624403e-09, 0.5, 0, -0.5)
+transform = Transform3D(-1.0927847e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.0927847e-08, 0.3, 0, -0.3)
 mesh = SubResource("PlaneMesh_h1bdy")
 
 [node name="Corner3" type="MeshInstance3D" parent="Selector" unique_id=288492127]
-transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, -0.5, 0, 0.5)
+transform = Transform3D(-1.0927847e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.0927847e-08, -0.3, 0, 0.3)
 mesh = SubResource("PlaneMesh_h1bdy")
 
 [node name="Corner4" type="MeshInstance3D" parent="Selector" unique_id=1410529971]
-transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, 0.5, 0, 0.5)
+transform = Transform3D(-0.25, 0, -3.774895e-08, 0, 0.25, 0, 3.774895e-08, 0, -0.25, 0.3, 0, 0.3)
 mesh = SubResource("PlaneMesh_h1bdy")
 
 [node name="grass_tress_002" parent="." unique_id=10478127 instance=ExtResource("5_b3faq")]

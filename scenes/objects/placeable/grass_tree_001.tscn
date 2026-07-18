@@ -21,12 +21,10 @@
 [ext_resource type="PackedScene" uid="uid://ywefcaq872u5" path="res://models/kenney_nature-kit/glb/plant_flatShort.glb" id="17_3yyiy"]
 [ext_resource type="PackedScene" uid="uid://sl17kbdv87at" path="res://models/kenney_nature-kit/glb/plant_flatTall.glb" id="18_qowce"]
 
-[node name="grass_tree_001" type="Node3D" unique_id=337058163 node_paths=PackedStringArray("tree_object")]
+[node name="grass_tree_001" type="Node3D" unique_id=337058163]
 script = ExtResource("1_aklyu")
 variant_trees = Array[PackedScene]([ExtResource("4_a4bdt"), ExtResource("3_q67ct"), ExtResource("4_q3kwj"), ExtResource("5_fa8fs"), ExtResource("6_x3723"), ExtResource("7_kb3ff"), ExtResource("8_qf77j"), ExtResource("9_4tnk3"), ExtResource("10_bk6ds")])
 variant_bushs = Array[PackedScene]([ExtResource("11_6goui"), ExtResource("12_6gxfj"), ExtResource("13_wcfcl"), ExtResource("14_2de4s"), ExtResource("15_yufw5"), ExtResource("16_j3xws"), ExtResource("17_3yyiy"), ExtResource("18_qowce")])
-tree_object = NodePath("tree_place")
-grow_speed = 15.0
 
 [node name="grass" parent="." unique_id=88163756 instance=ExtResource("1_xxql7")]
 
@@ -34,3 +32,5 @@ grow_speed = 15.0
 visible = false
 
 [node name="tree_place" type="Node3D" parent="." unique_id=1816214014]
+
+[node name="bush_place" type="Node3D" parent="." unique_id=1373861104]

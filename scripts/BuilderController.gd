@@ -1,5 +1,7 @@
 extends Node3D
-
+class_name BuilderController
+@export var canvas_layer: CanvasLayer
+@export var reward_indicator: PackedScene
 @export var  cell_size : int = 1
 @export var structures: Array[Structure] = []
 var data_structures:Array[DataStructure] = []
@@ -7,15 +9,21 @@ var data_structures:Array[DataStructure] = []
 
 var map:DataMap
 
+var current_index : int = -1
 var index:int = 0 # Index of structure being built
 
 @export var selector:Node3D # The 'cursor'
 @export var selector_container:Node3D # Node that holds a preview of the structure
 @export var view_camera:Camera3D # Used for raycasting mouse
 #@export var gridmap:GridMap
-@export var point_display:Label
+@export var point_indicator_control : Control
+@export var point_indicator: ColorRect
+
+var preview_structure : Node3D
 
 var plane:Plane # Used for raycasting mouse
+
+var current_pos : Vector3
 
 func _ready():
 	
@@ -37,7 +45,7 @@ func _ready():
 		#
 	#gridmap.mesh_library = mesh_library
 	
-	#update_structure()
+	update_structure()
 	update_point()
 
 func _process(delta):
@@ -58,13 +66,23 @@ func _process(delta):
 		view_camera.project_ray_normal(get_viewport().get_mouse_position()))
 
 	var gridmap_position = Vector3(round(world_position.x), 0, round(world_position.z))
+	#if gridmap_position == Vector3.ZERO:
+		#return
 	selector.position = lerp(selector.position, gridmap_position, min(delta * 40, 1.0))
+	
+	if current_pos != gridmap_position:
+		current_pos = gridmap_position
+		update_structure()
 	
 	action_build(gridmap_position)
 	action_demolish(gridmap_position)
 
-# Retrieve the mesh from a PackedScene, used for dynamically creating a MeshLibrary
+#func _input(event: InputEvent) -> void:
+	#if event is InputEventMouseMotion:
+		#if event.relative != Vector2.ZERO:
+			#update_structure()
 
+# Retrieve the mesh from a PackedScene, used for dynamically creating a MeshLibrary
 func get_mesh(packed_scene):
 	var scene_state:SceneState = packed_scene.get_state()
 	for i in range(scene_state.get_node_count()):
@@ -80,13 +98,23 @@ func get_mesh(packed_scene):
 
 func action_build(gridmap_position):
 	if Input.is_action_just_pressed("build") and !check_occupied_data_structures(Vector2i(gridmap_position.x,gridmap_position.z)):
-		var structure = structures[index]
-		var instance = structure.model.instantiate()
+		#var structure = structures[index]
+		#var instance = structure.model.instantiate()
+		if !preview_structure:
+			return
+		var instance = preview_structure
+		instance.reparent(self)
+		preview_structure = null
 		if instance is TreeGrow:
-			(instance as TreeGrow).can_grow = false
-		add_child(instance)
+			var tg : TreeGrow = (instance as TreeGrow)
+			tg.can_grow = true
+			tg.builder_controller = self
+			
+			tg.grow_tree()
 		instance.global_position = gridmap_position
+		instance.rotation  = selector.rotation
 		
+		# spawn effect
 		var tween = create_tween()
 		instance.scale = Vector3.ONE * 0.5
 		tween.tween_property(instance, "scale", Vector3.ONE, 0.5).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
@@ -95,6 +123,12 @@ func action_build(gridmap_position):
 		ds.position = Vector2i(gridmap_position.x,gridmap_position.z)
 		ds.structure = index
 		data_structures.append(ds)
+		
+		map.point -= structures[index].point
+		update_point()
+		
+		#await get_tree().create_timer(1.0).timeout
+		#update_structure()
 		
 		pass
 		#var previous_tile = gridmap.get_cell_item(gridmap_position)
@@ -129,29 +163,85 @@ func action_rotate():
 func action_structure_toggle():
 	if Input.is_action_just_pressed("structure_next"):
 		index = wrap(index + 1, 0, structures.size())
+		if preview_structure:
+			preview_structure.queue_free()
+			preview_structure = null
+		update_structure()
 		#Audio.play("sounds/toggle.ogg", -30)
 	
 	if Input.is_action_just_pressed("structure_previous"):
 		index = wrap(index - 1, 0, structures.size())
+		if preview_structure:
+			preview_structure.queue_free()
+			preview_structure = null
+		update_structure()
 		#Audio.play("sounds/toggle.ogg", -30)
 
-	#update_structure()
+	
 
 # Update the structure visual in the 'cursor'
 
 func update_structure():
-	# Clear previous structure preview in selector
-	for n in selector_container.get_children():
-		selector_container.remove_child(n)
-		n.queue_free()
-		
-	# Create new structure preview in selector
-	var _model = structures[index].model.instantiate()
-	selector_container.add_child(_model)
-	_model.position.y += 0.25
+	if current_index == index:
+		if preview_structure and preview_structure is TreeGrow:
+			(preview_structure as TreeGrow).update_tree()
+
+	
+	if !preview_structure:
+		#preview_structure.queue_free()
+		var structure = structures[index]
+		current_index = index
+		var instance = structure.model.instantiate()
+		if instance is TreeGrow:
+			var tg : TreeGrow = (instance as TreeGrow)
+			tg.can_grow = false
+			tg.builder_controller = self
+		preview_structure = instance
+		selector.add_child(preview_structure)
+	## Clear previous structure preview in selector
+	#for n in selector_container.get_children():
+		#selector_container.remove_child(n)
+		#n.queue_free()
+		#
+	## Create new structure preview in selector
+	#var _model = structures[index].model.instantiate()
+	#selector_container.add_child(_model)
+	#_model.position.y += 0.25
 	
 func update_point():
-	point_display.text = "$" + str(map.point)
+	if point_indicator:
+		point_indicator.size.x = ((map.point/1000.0) * 200) - 6
+		print(map.point)
+
+func show_reward(tree_pos:Vector3):
+	if reward_indicator:
+		var ri = reward_indicator.instantiate()
+		canvas_layer.add_child(ri)
+		
+		ri.position = get_viewport().get_camera_3d().unproject_position(tree_pos) - (ri.size / 2.0)
+		var original_scale = ri.scale
+		ri.scale = ri.scale * 0.5
+		var tween = create_tween()
+		tween.tween_property(ri, "scale", original_scale, 0.7)\
+		.set_trans(Tween.TRANS_EXPO)\
+		.set_ease(Tween.EASE_OUT).set_delay(0.5)
+		
+		tween.tween_property(ri, "position", point_indicator_control.global_position + (point_indicator_control.size / 2.0), 1)\
+		.set_trans(Tween.TRANS_LINEAR)\
+		.set_ease(Tween.EASE_OUT).set_delay(0.5)
+		
+		tween.tween_callback(_point_indicator_control_effect)
+
+var tween_point_indicator_control_effect : Tween
+func _point_indicator_control_effect():
+	if tween_point_indicator_control_effect and tween_point_indicator_control_effect.is_valid():
+		tween_point_indicator_control_effect.kill()
+	point_indicator_control.scale = Vector2.ONE * 1.5
+	
+	tween_point_indicator_control_effect = create_tween()
+	tween_point_indicator_control_effect.tween_property(point_indicator_control, "scale",Vector2.ONE, 0.7)\
+	.set_trans(Tween.TRANS_ELASTIC)\
+	.set_ease(Tween.EASE_OUT)
 
 # Saving/load
 
