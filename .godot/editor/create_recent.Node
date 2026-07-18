@@ -1,0 +1,12 @@
+Node3D
+Sprite2D
+Sprite3D
+MeshInstance3D
+TextureRect
+TileMap
+GridMap
+Label
+CanvasLayer
+DirectionalLight3D
+WorldEnvironment
+Camera3D
