@@ -1,6 +1,7 @@
 extends Node3D
 class_name BuilderController
 @export var canvas_layer: CanvasLayer
+@export var game_menu_ui: Control
 @export var reward_indicator: PackedScene
 @export var  cell_size : int = 1
 @export var structures: Array[Structure] = []
@@ -279,7 +280,10 @@ func update_point():
 func show_reward(tree_pos:Vector3,reward:int):
 	if reward_indicator and reward > 0:
 		var ri = reward_indicator.instantiate()
-		canvas_layer.add_child(ri)
+		if game_menu_ui:
+			game_menu_ui.add_child(ri)
+		else:
+			canvas_layer.add_child(ri)
 		
 		ri.position = get_viewport().get_camera_3d().unproject_position(tree_pos) - (ri.size / 2.0)
 		var original_scale = ri.scale
@@ -295,7 +299,12 @@ func show_reward(tree_pos:Vector3,reward:int):
 		
 		tween.tween_callback(_point_indicator_control_effect.bind(ri,reward))
 		
-		Audio.play("audio/kenney_interface-sounds/Audio/confirmation_001.ogg, audio/kenney_interface-sounds/Audio/confirmation_002.ogg, audio/kenney_interface-sounds/Audio/confirmation_003.ogg", -20)
+		if game_menu_ui:
+			if game_menu_ui.visible:
+				Audio.play("audio/kenney_interface-sounds/Audio/confirmation_001.ogg, audio/kenney_interface-sounds/Audio/confirmation_002.ogg, audio/kenney_interface-sounds/Audio/confirmation_003.ogg", -20)
+		else:
+			Audio.play("audio/kenney_interface-sounds/Audio/confirmation_001.ogg, audio/kenney_interface-sounds/Audio/confirmation_002.ogg, audio/kenney_interface-sounds/Audio/confirmation_003.ogg", -20)
+			
 
 var tween_point_indicator_control_effect : Tween
 func _point_indicator_control_effect(ri,reward:int):
@@ -311,7 +320,11 @@ func _point_indicator_control_effect(ri,reward:int):
 	tween_point_indicator_control_effect.tween_callback(ri.queue_free)
 	
 	map.add_point(reward)
-	Audio.play("audio/kenney_digital-audio/Audio/powerUp2.ogg, audio/kenney_digital-audio/Audio/powerUp6.ogg, audio/kenney_digital-audio/Audio/powerUp7.ogg", -20)
+	if game_menu_ui:
+		if game_menu_ui.visible:
+			Audio.play("audio/kenney_digital-audio/Audio/powerUp2.ogg, audio/kenney_digital-audio/Audio/powerUp6.ogg, audio/kenney_digital-audio/Audio/powerUp7.ogg", -20)
+	else:
+		Audio.play("audio/kenney_digital-audio/Audio/powerUp2.ogg, audio/kenney_digital-audio/Audio/powerUp6.ogg, audio/kenney_digital-audio/Audio/powerUp7.ogg", -20)
 	update_point()
 
 # Saving/load

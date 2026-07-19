@@ -685,9 +685,10 @@ transform = Transform3D(1, 0, 0, 0, 0.6425068, -0.76628, 0, 0.76628, 0.6425068, 
 
 [node name="Camera" type="Camera3D" parent="CameraController" unique_id=1843932101]
 
-[node name="BuilderController" type="Node3D" parent="." unique_id=1099927626 node_paths=PackedStringArray("canvas_layer", "selector", "selector_container", "view_camera", "point_indicator_control", "point_indicator", "context_menu")]
+[node name="BuilderController" type="Node3D" parent="." unique_id=1099927626 node_paths=PackedStringArray("canvas_layer", "game_menu_ui", "selector", "selector_container", "view_camera", "point_indicator_control", "point_indicator", "context_menu")]
 script = ExtResource("3_0uv0p")
 canvas_layer = NodePath("../CanvasLayer")
+game_menu_ui = NodePath("../CanvasLayer/GameUI")
 reward_indicator = ExtResource("3_pdh0q")
 structures = Array[ExtResource("4_b3faq")]([SubResource("Resource_7c4bj"), SubResource("Resource_pdh0q"), SubResource("Resource_rm3lh"), SubResource("Resource_jgbtq"), SubResource("Resource_4q8dg")])
 selector = NodePath("../Selector")
