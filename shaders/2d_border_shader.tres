@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cu7hp1wvvhnr"]
+
+[ext_resource type="Shader" uid="uid://dv5x8c1dn7k0e" path="res://shaders/2d_border_shader.gdshader" id="1_x6wme"]
+
+[resource]
+shader = ExtResource("1_x6wme")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 5.0000002375
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
