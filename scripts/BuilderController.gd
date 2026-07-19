@@ -66,8 +66,8 @@ func _process(delta):
 		#return
 	
 	# Controls
-	
-	action_rotate() # Rotates selection 90 degrees
+	if Input.is_action_just_pressed("rotate"):
+		action_rotate() # Rotates selection 90 degrees
 	action_structure_toggle() # Toggles between structures
 	
 	#action_save() # Saving
@@ -203,11 +203,7 @@ func action_demolish(gridmap_position):
 # Rotates the 'cursor' 90 degrees
 
 func action_rotate():
-	if Input.is_action_just_pressed("rotate"):
-		selector.rotate_y(deg_to_rad(90))
-		
-		#Audio.play("sounds/rotate.ogg", -30)
-
+	selector.rotate_y(deg_to_rad(90))
 # Toggle between structures to build
 
 func action_structure_toggle():

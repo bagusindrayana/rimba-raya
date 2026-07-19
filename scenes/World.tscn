@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://b2a25tbfy20j6" path="res://ui/kenney_cursor-pixel-pack/Tiles/tile_0019.png" id="11_30fn3"]
 [ext_resource type="Texture2D" uid="uid://dbwturosfrovr" path="res://ui/kenney_cursor-pixel-pack/Tiles/tile_0039.png" id="11_dwmkc"]
 [ext_resource type="Texture2D" uid="uid://b2t1vftkv8co" path="res://models/kenney_nature-kit/Side/mushroom_red.png" id="12_lawxi"]
+[ext_resource type="Texture2D" uid="uid://dx14ho7l1r5" path="res://ui/kenney_cursor-pixel-pack/Tiles/tile_0209.png" id="13_lawxi"]
 [ext_resource type="PackedScene" uid="uid://cs778ahgo8qir" path="res://scenes/objects/placeable/grass_rock.tscn" id="19_dgldv"]
 [ext_resource type="PackedScene" uid="uid://cx1yiupvco4nu" path="res://scenes/objects/placeable/grass_log_flower_001.tscn" id="21_yncth"]
 [ext_resource type="PackedScene" uid="uid://dlxbkbpxkoijj" path="res://scenes/objects/placeable/grass_mushroom_001.tscn" id="22_yncth"]
@@ -577,6 +578,54 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("12_lawxi")
 stretch_mode = 3
 
+[node name="Button" type="Button" parent="CanvasLayer/GameUI/Menu" unique_id=1280234921]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.0
+offset_top = -59.4
+offset_right = 25.0
+offset_bottom = -9.400002
+grow_horizontal = 2
+flat = true
+script = ExtResource("9_rpuxp")
+
+[node name="Control" type="Control" parent="CanvasLayer/GameUI/Menu/Button" unique_id=1739115040]
+clip_contents = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GameUI/Menu/Button/Control" unique_id=766578854]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_o1tcx")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/GameUI/Menu/Button/Control" unique_id=1659380976]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.35, 0.35)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("13_lawxi")
+
 [node name="TopMenu" type="HBoxContainer" parent="CanvasLayer" unique_id=1684754147]
 custom_minimum_size = Vector2(100, 50)
 offset_left = 20.0
@@ -730,4 +779,5 @@ mesh = SubResource("PlaneMesh_h1bdy")
 [connection signal="pressed" from="CanvasLayer/GameUI/Menu/HBoxContainer/Button3" to="BuilderController" method="select_structure_by_index" binds= [2]]
 [connection signal="pressed" from="CanvasLayer/GameUI/Menu/HBoxContainer/Button4" to="BuilderController" method="select_structure_by_index" binds= [3]]
 [connection signal="pressed" from="CanvasLayer/GameUI/Menu/HBoxContainer/Button5" to="BuilderController" method="select_structure_by_index" binds= [4]]
+[connection signal="pressed" from="CanvasLayer/GameUI/Menu/Button" to="BuilderController" method="action_rotate"]
 [connection signal="pressed" from="CanvasLayer/TopMenu/Button" to="CanvasLayer/GameUI/Menu/HBoxContainer/Button" method="exit_game"]
