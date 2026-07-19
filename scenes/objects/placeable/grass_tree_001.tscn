@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://crpn3jly1qksn" path="res://scripts/TreeGrow.gd" id="1_aklyu"]
 [ext_resource type="PackedScene" uid="uid://bex7jkxsach1" path="res://scenes/objects/grass.tscn" id="1_xxql7"]
-[ext_resource type="PackedScene" uid="uid://bhn2cdg6tsy68" path="res://scenes/objects/tree_001.tscn" id="2_qe8p0"]
 [ext_resource type="PackedScene" uid="uid://dvv1mytwp4x4a" path="res://models/kenney_nature-kit/glb/tree_default.glb" id="3_q67ct"]
 [ext_resource type="PackedScene" uid="uid://bti8vdqamachh" path="res://models/kenney_nature-kit/glb/tree_cone.glb" id="4_a4bdt"]
 [ext_resource type="PackedScene" uid="uid://1t1x86jq56sh" path="res://models/kenney_nature-kit/glb/tree_cone_dark.glb" id="4_q3kwj"]
@@ -12,24 +11,24 @@
 [ext_resource type="PackedScene" uid="uid://dvnnt3cox0i66" path="res://models/kenney_nature-kit/glb/tree_blocks.glb" id="8_qf77j"]
 [ext_resource type="PackedScene" uid="uid://bjlqdhxaybq8o" path="res://models/kenney_nature-kit/glb/tree_blocks_dark.glb" id="9_4tnk3"]
 [ext_resource type="PackedScene" uid="uid://bq15pahy5egv5" path="res://models/kenney_nature-kit/glb/tree_pineDefaultB.glb" id="10_bk6ds"]
-[ext_resource type="PackedScene" uid="uid://uljgkyyw5e1t" path="res://models/kenney_nature-kit/glb/plant_bush.glb" id="11_6goui"]
-[ext_resource type="PackedScene" uid="uid://dpboxihtkt6gm" path="res://models/kenney_nature-kit/glb/plant_bushDetailed.glb" id="12_6gxfj"]
 [ext_resource type="PackedScene" uid="uid://dwo4d8yffflxr" path="res://models/kenney_nature-kit/glb/plant_bushLarge.glb" id="13_wcfcl"]
 [ext_resource type="PackedScene" uid="uid://ds6ejynmfsvvi" path="res://models/kenney_nature-kit/glb/plant_bushLargeTriangle.glb" id="14_2de4s"]
 [ext_resource type="PackedScene" uid="uid://ddtljue5cg5sf" path="res://models/kenney_nature-kit/glb/plant_bushSmall.glb" id="15_yufw5"]
 [ext_resource type="PackedScene" uid="uid://cuxvqscud8sxk" path="res://models/kenney_nature-kit/glb/plant_bushTriangle.glb" id="16_j3xws"]
 [ext_resource type="PackedScene" uid="uid://ywefcaq872u5" path="res://models/kenney_nature-kit/glb/plant_flatShort.glb" id="17_3yyiy"]
+[ext_resource type="PackedScene" uid="uid://b5i1ny42ulb1u" path="res://models/kenney_nature-kit/glb/grass.glb" id="17_bk6ds"]
+[ext_resource type="PackedScene" uid="uid://dv6rofcgesike" path="res://models/kenney_nature-kit/glb/grass_large.glb" id="18_6goui"]
 [ext_resource type="PackedScene" uid="uid://sl17kbdv87at" path="res://models/kenney_nature-kit/glb/plant_flatTall.glb" id="18_qowce"]
+[ext_resource type="PackedScene" uid="uid://3pu0xruwh0qq" path="res://models/kenney_nature-kit/glb/grass_leafs.glb" id="19_6gxfj"]
+[ext_resource type="PackedScene" uid="uid://b64u8xrqrcp5r" path="res://models/kenney_nature-kit/glb/grass_leafsLarge.glb" id="20_wcfcl"]
 
 [node name="grass_tree_001" type="Node3D" unique_id=337058163]
 script = ExtResource("1_aklyu")
 variant_trees = Array[PackedScene]([ExtResource("4_a4bdt"), ExtResource("3_q67ct"), ExtResource("4_q3kwj"), ExtResource("5_fa8fs"), ExtResource("6_x3723"), ExtResource("7_kb3ff"), ExtResource("8_qf77j"), ExtResource("9_4tnk3"), ExtResource("10_bk6ds")])
-variant_bushs = Array[PackedScene]([ExtResource("11_6goui"), ExtResource("12_6gxfj"), ExtResource("13_wcfcl"), ExtResource("14_2de4s"), ExtResource("15_yufw5"), ExtResource("16_j3xws"), ExtResource("17_3yyiy"), ExtResource("18_qowce")])
+variant_bushs = Array[PackedScene]([ExtResource("13_wcfcl"), ExtResource("14_2de4s"), ExtResource("15_yufw5"), ExtResource("16_j3xws"), ExtResource("17_3yyiy"), ExtResource("18_qowce"), ExtResource("17_bk6ds"), ExtResource("18_6goui"), ExtResource("19_6gxfj"), ExtResource("20_wcfcl")])
+grow_speed = 15.0
 
 [node name="grass" parent="." unique_id=88163756 instance=ExtResource("1_xxql7")]
-
-[node name="tree_default2" parent="." unique_id=2118893303 instance=ExtResource("2_qe8p0")]
-visible = false
 
 [node name="tree_place" type="Node3D" parent="." unique_id=1816214014]
 

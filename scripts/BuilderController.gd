@@ -5,6 +5,7 @@ class_name BuilderController
 @export var  cell_size : int = 1
 @export var structures: Array[Structure] = []
 var data_structures:Array[DataStructure] = []
+var object_grids : Array[Node3D] = []
 
 
 var map:DataMap
@@ -19,6 +20,9 @@ var index:int = 0 # Index of structure being built
 @export var point_indicator_control : Control
 @export var point_indicator: ColorRect
 
+@export var context_menu : Control
+var  _open_context_menu : bool = false
+
 var preview_structure : Node3D
 
 var plane:Plane # Used for raycasting mouse
@@ -26,7 +30,8 @@ var plane:Plane # Used for raycasting mouse
 var current_pos : Vector3
 
 func _ready():
-	
+	if !_open_context_menu and context_menu:
+		context_menu.hide()
 	map = DataMap.new()
 	plane = Plane(Vector3.UP, Vector3.ZERO)
 	
@@ -49,6 +54,15 @@ func _ready():
 	update_point()
 
 func _process(delta):
+	#if Input.is_action_just_pressed("context_menu"):
+		#if context_menu:
+			#if  _open_context_menu:
+				#context_menu.hide()
+			#else:
+				#context_menu.show()
+			#_open_context_menu = !_open_context_menu
+	#if _open_context_menu:
+		#return
 	
 	# Controls
 	
@@ -64,18 +78,26 @@ func _process(delta):
 	var world_position = plane.intersects_ray(
 		view_camera.project_ray_origin(get_viewport().get_mouse_position()),
 		view_camera.project_ray_normal(get_viewport().get_mouse_position()))
-
+	if !world_position:
+		return
+	#if gridmap_position == Vector3.ZERO:
+		#return
 	var gridmap_position = Vector3(round(world_position.x), 0, round(world_position.z))
 	#if gridmap_position == Vector3.ZERO:
 		#return
 	selector.position = lerp(selector.position, gridmap_position, min(delta * 40, 1.0))
-	
+	#action_build(gridmap_position)
 	if current_pos != gridmap_position:
 		current_pos = gridmap_position
 		update_structure()
 	
-	action_build(gridmap_position)
-	action_demolish(gridmap_position)
+	
+	#action_demolish(gridmap_position)
+	
+func _unhandled_input(event):
+	action_build(current_pos)
+	action_demolish(current_pos)
+	
 
 #func _input(event: InputEvent) -> void:
 	#if event is InputEventMouseMotion:
@@ -98,21 +120,37 @@ func get_mesh(packed_scene):
 
 func action_build(gridmap_position):
 	if Input.is_action_just_pressed("build") and !check_occupied_data_structures(Vector2i(gridmap_position.x,gridmap_position.z)):
-		#var structure = structures[index]
+		var structure = structures[index]
+		if map.point < structure.point:
+			return
 		#var instance = structure.model.instantiate()
 		if !preview_structure:
 			return
 		var instance = preview_structure
 		instance.reparent(self)
 		preview_structure = null
+		instance.global_position = gridmap_position
+		instance.rotation  = selector.rotation
 		if instance is TreeGrow:
 			var tg : TreeGrow = (instance as TreeGrow)
 			tg.can_grow = true
 			tg.builder_controller = self
+			tg.structure = structures[index]
 			
 			tg.grow_tree()
-		instance.global_position = gridmap_position
-		instance.rotation  = selector.rotation
+		elif instance is WaterPond:
+			var wp : WaterPond = (instance as WaterPond)
+			wp.builder_controller = self
+			wp.structure = structures[index]
+			wp.place()
+		elif instance is PlaceableObject:
+			var po: PlaceableObject = (instance as PlaceableObject)
+			po.builder_controller = self
+			po.structure = structures[index]
+			po.give_reward()
+		elif instance.has_meta("reward") and instance.get_meta("reward") is int:
+			show_reward(instance.global_position,instance.get_meta("reward") as int)
+		
 		
 		# spawn effect
 		var tween = create_tween()
@@ -122,14 +160,18 @@ func action_build(gridmap_position):
 		var ds = DataStructure.new()
 		ds.position = Vector2i(gridmap_position.x,gridmap_position.z)
 		ds.structure = index
+		if instance is TreeGrow:
+			ds.variant_tree_index = (instance as TreeGrow).variant_tree_index
+			ds.variant_bush_indexs = (instance as TreeGrow).variant_bush_indexs
 		data_structures.append(ds)
+		object_grids.append(instance)
 		
 		map.point -= structures[index].point
 		update_point()
 		
 		#await get_tree().create_timer(1.0).timeout
 		#update_structure()
-		
+		Audio.play("audio/kenney_interface-sounds/Audio/drop_002.ogg, audio/kenney_interface-sounds/Audio/drop_003.ogg, audio/kenney_interface-sounds/Audio/bong_001.ogg", -20)
 		pass
 		#var previous_tile = gridmap.get_cell_item(gridmap_position)
 		#gridmap.set_cell_item(gridmap_position, index, gridmap.get_orthogonal_index_from_basis(selector.basis))
@@ -144,7 +186,14 @@ func action_build(gridmap_position):
 
 func action_demolish(gridmap_position):
 	if Input.is_action_just_pressed("demolish"):
-		pass
+		var cek = get_occupied_data_structures(Vector2(gridmap_position.x,gridmap_position.z))
+		if cek:
+			var index = data_structures.find(cek)
+			print("Remove data index : ",index)
+			
+			data_structures.remove_at(index)
+			object_grids[index].queue_free()
+			object_grids.remove_at(index)
 		#if gridmap.get_cell_item(gridmap_position) != -1:
 			#gridmap.set_cell_item(gridmap_position, -1)
 			
@@ -177,14 +226,23 @@ func action_structure_toggle():
 		update_structure()
 		#Audio.play("sounds/toggle.ogg", -30)
 
-	
+func select_structure_by_index(new_index:int):
+	print(new_index)
+	index = new_index
+	if preview_structure:
+		preview_structure.queue_free()
+		preview_structure = null
+	update_structure()
 
 # Update the structure visual in the 'cursor'
 
 func update_structure():
 	if current_index == index:
-		if preview_structure and preview_structure is TreeGrow:
-			(preview_structure as TreeGrow).update_tree()
+		if preview_structure:
+			if preview_structure is TreeGrow:
+				(preview_structure as TreeGrow).update_tree()
+			elif preview_structure is PlaceableObject:
+				(preview_structure as PlaceableObject).update_object()
 
 	
 	if !preview_structure:
@@ -196,6 +254,11 @@ func update_structure():
 			var tg : TreeGrow = (instance as TreeGrow)
 			tg.can_grow = false
 			tg.builder_controller = self
+			tg.structure = structures[index]
+		elif instance is WaterPond:
+			var wp : WaterPond = (instance as WaterPond)
+			wp.builder_controller = self
+			wp.structure = structures[index]
 		preview_structure = instance
 		selector.add_child(preview_structure)
 	## Clear previous structure preview in selector
@@ -213,8 +276,8 @@ func update_point():
 		point_indicator.size.x = ((map.point/1000.0) * 200) - 6
 		print(map.point)
 
-func show_reward(tree_pos:Vector3):
-	if reward_indicator:
+func show_reward(tree_pos:Vector3,reward:int):
+	if reward_indicator and reward > 0:
 		var ri = reward_indicator.instantiate()
 		canvas_layer.add_child(ri)
 		
@@ -230,10 +293,12 @@ func show_reward(tree_pos:Vector3):
 		.set_trans(Tween.TRANS_LINEAR)\
 		.set_ease(Tween.EASE_OUT).set_delay(0.5)
 		
-		tween.tween_callback(_point_indicator_control_effect)
+		tween.tween_callback(_point_indicator_control_effect.bind(ri,reward))
+		
+		Audio.play("audio/kenney_interface-sounds/Audio/confirmation_001.ogg, audio/kenney_interface-sounds/Audio/confirmation_002.ogg, audio/kenney_interface-sounds/Audio/confirmation_003.ogg", -20)
 
 var tween_point_indicator_control_effect : Tween
-func _point_indicator_control_effect():
+func _point_indicator_control_effect(ri,reward:int):
 	if tween_point_indicator_control_effect and tween_point_indicator_control_effect.is_valid():
 		tween_point_indicator_control_effect.kill()
 	point_indicator_control.scale = Vector2.ONE * 1.5
@@ -242,6 +307,12 @@ func _point_indicator_control_effect():
 	tween_point_indicator_control_effect.tween_property(point_indicator_control, "scale",Vector2.ONE, 0.7)\
 	.set_trans(Tween.TRANS_ELASTIC)\
 	.set_ease(Tween.EASE_OUT)
+	
+	tween_point_indicator_control_effect.tween_callback(ri.queue_free)
+	
+	map.add_point(reward)
+	Audio.play("audio/kenney_digital-audio/Audio/powerUp2.ogg, audio/kenney_digital-audio/Audio/powerUp6.ogg, audio/kenney_digital-audio/Audio/powerUp7.ogg", -20)
+	update_point()
 
 # Saving/load
 
@@ -298,3 +369,25 @@ func check_occupied_data_structures(pos:Vector2i)->bool:
 		if ds.position == pos:
 			return true
 	return false
+	
+func get_occupied_data_structures(pos:Vector2i)->DataStructure:
+	for ds in data_structures:
+		if ds.position == pos:
+			return ds
+	return null
+	
+func get_occupied_data_object(pos:Vector2i)->Node3D:
+	for og in object_grids:
+		if og.global_position == Vector3(pos.x,0,pos.y):
+			return og
+	return null
+	
+func get_occupied_around(center:Vector2i,range: int)->Array[Vector2]:
+	var results : Array[Vector2]
+	for ds in data_structures:
+		var pos = ds.position
+		var in_range_x = abs(pos.x - center.x) <= range
+		var in_range_y = abs(pos.y - center.y) <= range
+		if in_range_x and in_range_y and Vector2i(pos.x,pos.y) != center:
+			results.append(pos)
+	return results

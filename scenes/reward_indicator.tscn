@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://bus4732mwltp6"]
 
+[ext_resource type="Material" uid="uid://cu7hp1wvvhnr" path="res://shaders/2d_border_shader.tres" id="1_ccfee"]
 [ext_resource type="Texture2D" uid="uid://dxqg4l0lr26np" path="res://models/kenney_nature-kit/Side/tree_fat.png" id="1_qerbv"]
 
 [node name="TextureRect" type="TextureRect" unique_id=933423487]
 texture_filter = 1
+material = ExtResource("1_ccfee")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

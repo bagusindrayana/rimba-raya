@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bqi2bw8ppbmlq"]
+
+[ext_resource type="PackedScene" uid="uid://dt7r4laa48uwn" path="res://models/kenney_cube-pets_1.0/GLB format/animal-fox.glb" id="1_06s8m"]
+[ext_resource type="Script" uid="uid://djo26od0iobq1" path="res://scripts/AnimalWild.gd" id="2_83i60"]
+[ext_resource type="Texture2D" uid="uid://cbcxve7n06umx" path="res://models/kenney_cube-pets_1.0/Previews/animal-fox.png" id="3_2mmuw"]
+[ext_resource type="PackedScene" uid="uid://c8m3aw8lyuln1" path="res://scenes/animal_icon.tscn" id="3_83i60"]
+
+[node name="animal-fox2" unique_id=497633780 node_paths=PackedStringArray("animation_player") instance=ExtResource("1_06s8m")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+script = ExtResource("2_83i60")
+wander_interval_time = 20.0
+icon_texture = ExtResource("3_2mmuw")
+animal_icon_prefab = ExtResource("3_83i60")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="body" parent="animal-fox/root" parent_id_path=PackedInt32Array(757285445) index="0" unique_id=955098552]
+transform = Transform3D(0.9824088, 0.17322516, 0.069756456, -0.17364816, 0.9848077, -4.656613e-10, -0.0686967, -0.01211308, 0.9975641, 1.573182e-08, 0.18124998, -3.8083503e-08)
+
+[node name="tail" parent="animal-fox/root/body" index="0" unique_id=492921003]
+transform = Transform3D(0.9396926, -0.34202015, 0, 0.34202015, 0.9396926, 0, 0, 0, 1, 0, 0.53749996, -0.4950962)

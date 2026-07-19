@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dlxbkbpxkoijj"]
+
+[ext_resource type="Script" uid="uid://crpn3jly1qksn" path="res://scripts/TreeGrow.gd" id="1_ccnmj"]
+[ext_resource type="PackedScene" uid="uid://36x3ie0b2jab" path="res://models/kenney_nature-kit/glb/stump_old.glb" id="2_kf7te"]
+[ext_resource type="PackedScene" uid="uid://d0se0p6xteu27" path="res://models/kenney_nature-kit/glb/stump_oldTall.glb" id="3_i1rim"]
+[ext_resource type="PackedScene" uid="uid://crhv3phlvukj1" path="res://models/kenney_nature-kit/glb/stump_round.glb" id="4_vs1tu"]
+[ext_resource type="PackedScene" uid="uid://drsrwvatua1lk" path="res://models/kenney_nature-kit/glb/stump_roundDetailed.glb" id="5_6dma3"]
+[ext_resource type="PackedScene" uid="uid://wkpkwhulgpu8" path="res://models/kenney_nature-kit/glb/stump_square.glb" id="6_l065e"]
+[ext_resource type="PackedScene" uid="uid://dyx677xgn63f5" path="res://models/kenney_nature-kit/glb/stump_squareDetailed.glb" id="7_0ge3u"]
+[ext_resource type="PackedScene" uid="uid://3dfxjrb01rfh" path="res://models/kenney_nature-kit/glb/stump_squareDetailedWide.glb" id="8_vefah"]
+[ext_resource type="PackedScene" uid="uid://cdej2xr8lx0fi" path="res://models/kenney_nature-kit/glb/mushroom_red.glb" id="21_b0wc6"]
+[ext_resource type="PackedScene" uid="uid://0hibllkljon4" path="res://models/kenney_nature-kit/glb/mushroom_redGroup.glb" id="22_lrimg"]
+[ext_resource type="PackedScene" uid="uid://d4grcmxkcnll" path="res://models/kenney_nature-kit/glb/mushroom_redTall.glb" id="23_kb5hm"]
+[ext_resource type="PackedScene" uid="uid://dlf325rbyuyl3" path="res://models/kenney_nature-kit/glb/mushroom_tan.glb" id="24_d58vw"]
+[ext_resource type="PackedScene" uid="uid://jvspo2by5v0d" path="res://models/kenney_nature-kit/glb/mushroom_tanGroup.glb" id="25_gf0jb"]
+[ext_resource type="PackedScene" uid="uid://j1wlmyq4htw0" path="res://models/kenney_nature-kit/glb/mushroom_tanTall.glb" id="26_ws28p"]
+[ext_resource type="PackedScene" uid="uid://bex7jkxsach1" path="res://scenes/objects/grass.tscn" id="27_ytskm"]
+
+[node name="grass_mushroom_001" type="Node3D" unique_id=337058163]
+script = ExtResource("1_ccnmj")
+is_tree = false
+variant_trees = Array[PackedScene]([ExtResource("2_kf7te"), ExtResource("3_i1rim"), ExtResource("4_vs1tu"), ExtResource("5_6dma3"), ExtResource("6_l065e"), ExtResource("7_0ge3u"), ExtResource("8_vefah")])
+variant_bushs = Array[PackedScene]([ExtResource("21_b0wc6"), ExtResource("22_lrimg"), ExtResource("23_kb5hm"), ExtResource("24_d58vw"), ExtResource("25_gf0jb"), ExtResource("26_ws28p")])
+grow_speed = 15.0
+
+[node name="grass" parent="." unique_id=88163756 instance=ExtResource("27_ytskm")]
+
+[node name="tree_place" type="Node3D" parent="." unique_id=1816214014]
+
+[node name="bush_place" type="Node3D" parent="." unique_id=1373861104]

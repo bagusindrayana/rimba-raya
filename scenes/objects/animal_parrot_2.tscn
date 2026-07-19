@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://msm8tlcba6qj"]
+
+[ext_resource type="PackedScene" uid="uid://c75dikd72vr4" path="res://models/kenney_cube-pets_1.0/GLB format/animal-parrot.glb" id="1_u84wk"]
+[ext_resource type="Script" uid="uid://djo26od0iobq1" path="res://scripts/AnimalWild.gd" id="2_aqvbq"]
+[ext_resource type="Texture2D" uid="uid://7q4jvin3bps6" path="res://models/kenney_cube-pets_1.0/Previews/animal-parrot.png" id="3_8tqaw"]
+[ext_resource type="PackedScene" uid="uid://c8m3aw8lyuln1" path="res://scenes/animal_icon.tscn" id="3_aqvbq"]
+
+[node name="animal-parrot2" unique_id=547280382 node_paths=PackedStringArray("animation_player") instance=ExtResource("1_u84wk")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+script = ExtResource("2_aqvbq")
+y_offset = 1.0
+flying = true
+icon_texture = ExtResource("3_8tqaw")
+animal_icon_prefab = ExtResource("3_aqvbq")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="body" parent="animal-parrot/root" parent_id_path=PackedInt32Array(813794051) index="0" unique_id=310722519]
+transform = Transform3D(0.9824088, 0.17322516, 0.069756456, -0.17364816, 0.9848077, -4.656613e-10, -0.0686967, -0.01211308, 0.9975641, 1.5731818e-08, 0.18124998, -3.8083503e-08)
+
+[node name="tail" parent="animal-parrot/root/body" index="1" unique_id=393158591]
+transform = Transform3D(0.9396926, -0.34202015, 0, 0.34202015, 0.9396926, 0, 0, 0, 1, 0, 0.53749996, -0.49509618)
+
+[node name="wing-right" parent="animal-parrot/root/body" index="2" unique_id=424574170]
+transform = Transform3D(0.7660445, -0.6427876, 0, 0.6427876, 0.7660445, 0, 0, 0, 1, -0.5250001, 0.4625, 0.031078815)
+
+[node name="wing-left" parent="animal-parrot/root/body" index="3" unique_id=742631997]
+transform = Transform3D(0.7660445, 0.6427876, 0, -0.6427876, 0.7660445, 0, 0, 0, 1, 0.625, 0.4625, 0.031078815)

@@ -6,3 +6,4 @@ class_name Structure
 
 @export_subgroup("Gameplay")
 @export var point:int # Price of the structure when building
+@export var reward_point:int

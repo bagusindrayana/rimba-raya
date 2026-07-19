@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cx1yiupvco4nu"]
+
+[ext_resource type="Script" uid="uid://bjcgahbfdarr" path="res://scripts/PlaceableObject.gd" id="1_81mcp"]
+[ext_resource type="PackedScene" uid="uid://b3kjntwwa8rpo" path="res://models/kenney_nature-kit/glb/flower_purpleA.glb" id="6_1aira"]
+[ext_resource type="PackedScene" uid="uid://cuilih3p46c6i" path="res://models/kenney_nature-kit/glb/flower_purpleB.glb" id="7_j7a6v"]
+[ext_resource type="PackedScene" uid="uid://bpmrlqfqanods" path="res://models/kenney_nature-kit/glb/flower_purpleC.glb" id="8_bfwbp"]
+[ext_resource type="PackedScene" uid="uid://h6tpc2j8jeqt" path="res://models/kenney_nature-kit/glb/flower_redA.glb" id="9_y3m8j"]
+[ext_resource type="PackedScene" uid="uid://dd8f47fuf0b2y" path="res://models/kenney_nature-kit/glb/flower_redB.glb" id="10_8eq73"]
+[ext_resource type="PackedScene" uid="uid://daosux0pe6jso" path="res://models/kenney_nature-kit/glb/flower_redC.glb" id="11_uu05y"]
+[ext_resource type="PackedScene" uid="uid://dl1hyq1d6jnke" path="res://models/kenney_nature-kit/glb/flower_yellowA.glb" id="12_ttjah"]
+[ext_resource type="PackedScene" uid="uid://bex7jkxsach1" path="res://scenes/objects/grass.tscn" id="27_enilk"]
+
+[node name="grass_log_flower_001" type="Node3D" unique_id=337058163]
+script = ExtResource("1_81mcp")
+variant_objects = Array[PackedScene]([ExtResource("6_1aira"), ExtResource("7_j7a6v"), ExtResource("8_bfwbp"), ExtResource("9_y3m8j"), ExtResource("10_8eq73"), ExtResource("11_uu05y"), ExtResource("12_ttjah")])
+object_count = 10
+
+[node name="grass" parent="." unique_id=88163756 instance=ExtResource("27_enilk")]
+
+[node name="object_place" type="Node3D" parent="." unique_id=1816214014]

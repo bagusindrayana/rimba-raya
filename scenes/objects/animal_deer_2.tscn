@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dlcsj7uli0nxr"]
+
+[ext_resource type="PackedScene" uid="uid://br3uuuygouo83" path="res://models/kenney_cube-pets_1.0/GLB format/animal-deer.glb" id="1_mcgiq"]
+[ext_resource type="Script" uid="uid://djo26od0iobq1" path="res://scripts/AnimalWild.gd" id="2_wefup"]
+[ext_resource type="Texture2D" uid="uid://wfm3hbbg3bkn" path="res://models/kenney_cube-pets_1.0/Previews/animal-deer.png" id="3_ruetw"]
+[ext_resource type="PackedScene" uid="uid://c8m3aw8lyuln1" path="res://scenes/animal_icon.tscn" id="3_wefup"]
+
+[node name="animal-deer2" unique_id=1191349819 node_paths=PackedStringArray("animation_player") instance=ExtResource("1_mcgiq")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+script = ExtResource("2_wefup")
+wander_interval_time = 20.0
+icon_texture = ExtResource("3_ruetw")
+animal_icon_prefab = ExtResource("3_wefup")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="body" parent="animal-deer/root" parent_id_path=PackedInt32Array(143425732) index="1" unique_id=406928803]
+transform = Transform3D(0.9824088, 0.17322516, 0.069756456, -0.17364816, 0.9848077, -4.656613e-10, -0.0686967, -0.01211308, 0.9975641, 1.573182e-08, 0.18124998, -3.8083503e-08)

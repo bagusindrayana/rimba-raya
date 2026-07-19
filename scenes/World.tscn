@@ -3,13 +3,29 @@
 [ext_resource type="Script" uid="uid://dqlnvbqqbywxv" path="res://scripts/CameraController.gd" id="1_kqs1s"]
 [ext_resource type="Texture2D" uid="uid://clcg8qgd8obut" path="res://ui/kenney_ui-pack-pixel-adventure/Tiles/Large tiles/Thin outline/tile_0008.png" id="2_ygioq"]
 [ext_resource type="Script" uid="uid://kqlefc8nyhqo" path="res://scripts/BuilderController.gd" id="3_0uv0p"]
+[ext_resource type="Texture2D" uid="uid://dc4gwhll6bn2e" path="res://ui/kenney_ui-pack-pixel-adventure/Tiles/Large tiles/Thin outline/tile_0026.png" id="3_h1bdy"]
 [ext_resource type="PackedScene" uid="uid://bus4732mwltp6" path="res://scenes/reward_indicator.tscn" id="3_pdh0q"]
 [ext_resource type="Script" uid="uid://bha7wmbi5fgm" path="res://scripts/Structure.gd" id="4_b3faq"]
+[ext_resource type="Texture2D" uid="uid://ck55ljvywy525" path="res://models/kenney_nature-kit/Isometric/tree_default_NE.png" id="4_nrtoj"]
 [ext_resource type="PackedScene" uid="uid://y5bjh0jg37e" path="res://scenes/objects/placeable/grass_tree_001.tscn" id="4_ygioq"]
-[ext_resource type="PackedScene" uid="uid://chjx2u13nen2r" path="res://scenes/objects/placeable/grass_tress_002.tscn" id="5_b3faq"]
+[ext_resource type="Texture2D" uid="uid://6fmt7eyxu05k" path="res://models/kenney_nature-kit/Isometric/ground_riverTile_NW.png" id="5_i4b1j"]
+[ext_resource type="Texture2D" uid="uid://cdxe74wnq4alr" path="res://ui/kenney_ui-pack-pixel-adventure/Tiles/Large tiles/Thick outline/tile_0039.png" id="6_o1tcx"]
 [ext_resource type="PackedScene" uid="uid://dgr1juidxa7gx" path="res://scenes/objects/placeable/water_river_tile.tscn" id="6_ygioq"]
+[ext_resource type="Texture2D" uid="uid://birq7m2yhlm51" path="res://ui/kenney_cursor-pixel-pack/Tiles/tile_0109.png" id="7_rpuxp"]
 [ext_resource type="Texture2D" uid="uid://cmrgov8g44hg8" path="res://ui/kenney_cursor-pixel-pack/Tiles/tile_0064.png" id="8_b3faq"]
+[ext_resource type="Texture2D" uid="uid://bnpj6ssxpop4i" path="res://ui/kenney_cursor-pixel-pack/Tiles/tile_0131.png" id="8_nthub"]
+[ext_resource type="Script" uid="uid://bqp8iome7jcai" path="res://scripts/animations/ButtonAnimation.gd" id="9_rpuxp"]
 [ext_resource type="Texture2D" uid="uid://dbmxxrpeppplc" path="res://ui/kenney_cursor-pixel-pack/Tiles/tile_0066.png" id="9_ygioq"]
+[ext_resource type="Texture2D" uid="uid://bx7q6hfbuwxja" path="res://ui/kenney_cursor-pixel-pack/Tiles/tile_0016.png" id="10_44lqw"]
+[ext_resource type="AudioStream" uid="uid://bq2d8y4disj0o" path="res://audio/002_Synthwave_15k.mp3" id="10_pdh0q"]
+[ext_resource type="Texture2D" uid="uid://cr6c0a0l3yw3s" path="res://models/kenney_nature-kit/Isometric/stone_tallF_SE.png" id="10_rm3lh"]
+[ext_resource type="Texture2D" uid="uid://bm8odvq3rh71q" path="res://models/kenney_nature-kit/Side/flower_redA.png" id="11_4q8dg"]
+[ext_resource type="Texture2D" uid="uid://b2a25tbfy20j6" path="res://ui/kenney_cursor-pixel-pack/Tiles/tile_0019.png" id="11_30fn3"]
+[ext_resource type="Texture2D" uid="uid://dbwturosfrovr" path="res://ui/kenney_cursor-pixel-pack/Tiles/tile_0039.png" id="11_dwmkc"]
+[ext_resource type="Texture2D" uid="uid://b2t1vftkv8co" path="res://models/kenney_nature-kit/Side/mushroom_red.png" id="12_lawxi"]
+[ext_resource type="PackedScene" uid="uid://cs778ahgo8qir" path="res://scenes/objects/placeable/grass_rock.tscn" id="19_dgldv"]
+[ext_resource type="PackedScene" uid="uid://cx1yiupvco4nu" path="res://scenes/objects/placeable/grass_log_flower_001.tscn" id="21_yncth"]
+[ext_resource type="PackedScene" uid="uid://dlxbkbpxkoijj" path="res://scenes/objects/placeable/grass_mushroom_001.tscn" id="22_yncth"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kqs1s"]
 sky_top_color = Color(0.5801129, 0.64897305, 0.7410035, 1)
@@ -19,23 +35,45 @@ ground_horizon_color = Color(0.95782083, 0.91011614, 0.66399896, 1)
 sun_angle_max = 14.68
 sun_curve = 0.32153207
 
-[sub_resource type="Sky" id="Sky_32lhk"]
+[sub_resource type="Sky" id="Sky_4q8dg"]
 sky_material = SubResource("ProceduralSkyMaterial_kqs1s")
 
 [sub_resource type="Environment" id="Environment_7g83o"]
 background_mode = 2
-sky = SubResource("Sky_32lhk")
+sky = SubResource("Sky_4q8dg")
 
 [sub_resource type="Resource" id="Resource_7c4bj"]
 script = ExtResource("4_b3faq")
 model = ExtResource("4_ygioq")
-point = 10
+point = 100
+reward_point = 50
 metadata/_custom_type_script = "uid://bha7wmbi5fgm"
 
 [sub_resource type="Resource" id="Resource_pdh0q"]
 script = ExtResource("4_b3faq")
 model = ExtResource("6_ygioq")
-point = 20
+point = 100
+reward_point = 50
+metadata/_custom_type_script = "uid://bha7wmbi5fgm"
+
+[sub_resource type="Resource" id="Resource_rm3lh"]
+script = ExtResource("4_b3faq")
+model = ExtResource("19_dgldv")
+point = 100
+metadata/_custom_type_script = "uid://bha7wmbi5fgm"
+
+[sub_resource type="Resource" id="Resource_jgbtq"]
+script = ExtResource("4_b3faq")
+model = ExtResource("21_yncth")
+point = 150
+reward_point = 100
+metadata/_custom_type_script = "uid://bha7wmbi5fgm"
+
+[sub_resource type="Resource" id="Resource_4q8dg"]
+script = ExtResource("4_b3faq")
+model = ExtResource("22_yncth")
+point = 150
+reward_point = 100
 metadata/_custom_type_script = "uid://bha7wmbi5fgm"
 
 [sub_resource type="MeshLibrary" id="MeshLibrary_b3faq"]
@@ -60,6 +98,13 @@ material = SubResource("StandardMaterial3D_pdh0q")
 
 [node name="World" type="Node3D" unique_id=296894406]
 
+[node name="AudioListener3D" type="AudioListener3D" parent="." unique_id=371584504]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=2140618033]
+stream = ExtResource("10_pdh0q")
+max_db = -10.0
+autoplay = true
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1641669249]
 transform = Transform3D(1, 0, 0, 0, 0.38268343, 0.9238795, 0, -0.9238795, 0.38268343, 0, 0, 0)
 light_color = Color(0.7663467, 0.90830356, 0.89161265, 1)
@@ -69,30 +114,28 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=223521969]
 environment = SubResource("Environment_7g83o")
 
-[node name="CameraController" type="Node3D" parent="." unique_id=1503993403]
-transform = Transform3D(1, 0, 0, 0, 0.6425068, 0.76628, 0, -0.76628, 0.6425068, 0, 3.0997324, 0)
-script = ExtResource("1_kqs1s")
-inital_zoom = 6.0
-min_zoom = 3.0
-max_zoom = 20.0
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2118247632]
 
-[node name="SelectorContainer" type="Node3D" parent="CameraController" unique_id=1159539747]
-transform = Transform3D(1, 0, 0, 0, 0.6425068, -0.76628, 0, 0.76628, 0.6425068, 0, -1.9915991, -2.375263)
+[node name="GameUI" type="Control" parent="CanvasLayer" unique_id=1664819062]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 
-[node name="Camera" type="Camera3D" parent="CameraController" unique_id=1843932101]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="CameraController" unique_id=2118247632]
-
-[node name="Label" type="Label" parent="CameraController/CanvasLayer" unique_id=607472278]
+[node name="Label" type="Label" parent="CanvasLayer/GameUI" unique_id=607472278]
 visible = false
-offset_right = 40.0
+layout_mode = 0
+offset_right = 50.0
 offset_bottom = 23.0
 text = "Point :"
 
-[node name="Control" type="Control" parent="CameraController/CanvasLayer" unique_id=1168035347]
+[node name="PointIndicatorContro" type="Control" parent="CanvasLayer/GameUI" unique_id=1168035347]
 clip_contents = true
 custom_minimum_size = Vector2(200, 30)
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -106,7 +149,7 @@ grow_horizontal = 2
 grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 
-[node name="fillProgress" type="ColorRect" parent="CameraController/CanvasLayer/Control" unique_id=2122013783]
+[node name="fillProgress" type="ColorRect" parent="CanvasLayer/GameUI/PointIndicatorContro" unique_id=2122013783]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 4
@@ -120,7 +163,7 @@ grow_vertical = 2
 pivot_offset_ratio = Vector2(0, 0.5)
 color = Color(0.3032554, 0.77777106, 0.5569761, 1)
 
-[node name="NinePatchRect2" type="NinePatchRect" parent="CameraController/CanvasLayer/Control" unique_id=1674368350]
+[node name="NinePatchRect2" type="NinePatchRect" parent="CanvasLayer/GameUI/PointIndicatorContro" unique_id=1674368350]
 texture_filter = 1
 clip_contents = true
 custom_minimum_size = Vector2(200, 30)
@@ -138,16 +181,521 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="BuilderController" type="Node3D" parent="." unique_id=1099927626 node_paths=PackedStringArray("canvas_layer", "selector", "selector_container", "view_camera", "point_indicator_control", "point_indicator")]
+[node name="ContextMenu" type="Control" parent="CanvasLayer/GameUI" unique_id=7916812]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GameUI/ContextMenu" unique_id=1931011909]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GameUI/ContextMenu/HBoxContainer" unique_id=1159800436]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="CanvasLayer/GameUI/ContextMenu/HBoxContainer/VBoxContainer" unique_id=747832079]
+clip_contents = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GameUI/ContextMenu/HBoxContainer/VBoxContainer/Control" unique_id=54926900]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_h1bdy")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/GameUI/ContextMenu/HBoxContainer/VBoxContainer/Control" unique_id=2040316208]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.45, 0.45)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("4_nrtoj")
+stretch_mode = 3
+
+[node name="Control2" type="Control" parent="CanvasLayer/GameUI/ContextMenu/HBoxContainer/VBoxContainer" unique_id=1765338322]
+clip_contents = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GameUI/ContextMenu/HBoxContainer/VBoxContainer/Control2" unique_id=1489344252]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_h1bdy")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/GameUI/ContextMenu/HBoxContainer/VBoxContainer/Control2" unique_id=974120868]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -206.0
+offset_top = -228.725
+offset_right = 206.0
+offset_bottom = 183.275
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.45, 0.45)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("5_i4b1j")
+stretch_mode = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/GameUI/ContextMenu/HBoxContainer" unique_id=452017502]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="CanvasLayer/GameUI/ContextMenu/HBoxContainer/VBoxContainer2" unique_id=460972556]
+clip_contents = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GameUI/ContextMenu/HBoxContainer/VBoxContainer2/Control" unique_id=1277287228]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_o1tcx")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/GameUI/ContextMenu/HBoxContainer/VBoxContainer2/Control" unique_id=1470652673]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.36, 0.36)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("7_rpuxp")
+
+[node name="Control2" type="Control" parent="CanvasLayer/GameUI/ContextMenu/HBoxContainer/VBoxContainer2" unique_id=1081934758]
+clip_contents = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GameUI/ContextMenu/HBoxContainer/VBoxContainer2/Control2" unique_id=486154372]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_o1tcx")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/GameUI/ContextMenu/HBoxContainer/VBoxContainer2/Control2" unique_id=1579149817]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.36, 0.36)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("8_nthub")
+
+[node name="Menu" type="Control" parent="CanvasLayer/GameUI" unique_id=1039919314]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -98.94
+offset_right = 100.0
+offset_bottom = -48.940002
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GameUI/Menu" unique_id=1941058408]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/GameUI/Menu/HBoxContainer" unique_id=1450434199]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+flat = true
+script = ExtResource("9_rpuxp")
+
+[node name="Control" type="Control" parent="CanvasLayer/GameUI/Menu/HBoxContainer/Button" unique_id=1843906822]
+clip_contents = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GameUI/Menu/HBoxContainer/Button/Control" unique_id=243334874]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_h1bdy")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/GameUI/Menu/HBoxContainer/Button/Control" unique_id=827752039]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.235, 0.235)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("4_nrtoj")
+stretch_mode = 3
+
+[node name="Button2" type="Button" parent="CanvasLayer/GameUI/Menu/HBoxContainer" unique_id=1369635772]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+flat = true
+script = ExtResource("9_rpuxp")
+
+[node name="Control2" type="Control" parent="CanvasLayer/GameUI/Menu/HBoxContainer/Button2" unique_id=1655880331]
+clip_contents = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GameUI/Menu/HBoxContainer/Button2/Control2" unique_id=2024631442]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_h1bdy")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/GameUI/Menu/HBoxContainer/Button2/Control2" unique_id=452893819]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -231.0
+offset_top = -238.6
+offset_right = 231.0
+offset_bottom = 223.4
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.235, 0.235)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("5_i4b1j")
+stretch_mode = 3
+
+[node name="Button3" type="Button" parent="CanvasLayer/GameUI/Menu/HBoxContainer" unique_id=881192322]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+flat = true
+script = ExtResource("9_rpuxp")
+
+[node name="Control2" type="Control" parent="CanvasLayer/GameUI/Menu/HBoxContainer/Button3" unique_id=99972886]
+clip_contents = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GameUI/Menu/HBoxContainer/Button3/Control2" unique_id=902437718]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_h1bdy")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/GameUI/Menu/HBoxContainer/Button3/Control2" unique_id=1023771331]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -231.0
+offset_top = -238.6
+offset_right = 231.0
+offset_bottom = 223.4
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.235, 0.235)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("10_rm3lh")
+stretch_mode = 3
+
+[node name="Button4" type="Button" parent="CanvasLayer/GameUI/Menu/HBoxContainer" unique_id=2137663343]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+flat = true
+script = ExtResource("9_rpuxp")
+
+[node name="Control2" type="Control" parent="CanvasLayer/GameUI/Menu/HBoxContainer/Button4" unique_id=1899686568]
+clip_contents = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GameUI/Menu/HBoxContainer/Button4/Control2" unique_id=116364568]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_h1bdy")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/GameUI/Menu/HBoxContainer/Button4/Control2" unique_id=121059417]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -231.0
+offset_top = -230.905
+offset_right = 231.0
+offset_bottom = 231.095
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.78, 0.78)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("11_4q8dg")
+stretch_mode = 3
+
+[node name="Button5" type="Button" parent="CanvasLayer/GameUI/Menu/HBoxContainer" unique_id=1319504197]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+flat = true
+script = ExtResource("9_rpuxp")
+
+[node name="Control2" type="Control" parent="CanvasLayer/GameUI/Menu/HBoxContainer/Button5" unique_id=48397765]
+clip_contents = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GameUI/Menu/HBoxContainer/Button5/Control2" unique_id=1879697552]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_h1bdy")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/GameUI/Menu/HBoxContainer/Button5/Control2" unique_id=2123072976]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -231.0
+offset_top = -230.905
+offset_right = 231.0
+offset_bottom = 231.095
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.78, 0.78)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("12_lawxi")
+stretch_mode = 3
+
+[node name="TopMenu" type="HBoxContainer" parent="CanvasLayer" unique_id=1684754147]
+custom_minimum_size = Vector2(100, 50)
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 124.0
+offset_bottom = 70.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/TopMenu" unique_id=1634568026]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+flat = true
+script = ExtResource("9_rpuxp")
+
+[node name="Control" type="Control" parent="CanvasLayer/TopMenu/Button" unique_id=1826713037]
+clip_contents = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TopMenu/Button/Control" unique_id=1601314741]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_o1tcx")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/TopMenu/Button/Control" unique_id=619764881]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.35, 0.35)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("10_44lqw")
+
+[node name="Button2" type="Button" parent="CanvasLayer/TopMenu" unique_id=1641170227 node_paths=PackedStringArray("texture_rect_button", "game_ui", "selector_ui", "camera_controller")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+toggle_mode = true
+flat = true
+script = ExtResource("9_rpuxp")
+texture_rect_button = NodePath("Control2/TextureRect2")
+texture_button_on = ExtResource("11_30fn3")
+texture_button_off = ExtResource("11_dwmkc")
+game_ui = NodePath("../../GameUI")
+selector_ui = NodePath("../../../Selector")
+camera_controller = NodePath("../../../CameraController")
+
+[node name="Control2" type="Control" parent="CanvasLayer/TopMenu/Button2" unique_id=296220058]
+clip_contents = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TopMenu/Button2/Control2" unique_id=1883545798]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_o1tcx")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/TopMenu/Button2/Control2" unique_id=662699953]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.35, 0.35)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("11_dwmkc")
+
+[node name="CameraController" type="Node3D" parent="." unique_id=1503993403]
+transform = Transform3D(1, 0, 0, 0, 0.6425068, 0.76628, 0, -0.76628, 0.6425068, 0, 3.0997324, 0)
+script = ExtResource("1_kqs1s")
+inital_zoom = 6.0
+min_zoom = 3.0
+max_zoom = 20.0
+
+[node name="SelectorContainer" type="Node3D" parent="CameraController" unique_id=1159539747]
+transform = Transform3D(1, 0, 0, 0, 0.6425068, -0.76628, 0, 0.76628, 0.6425068, 0, -1.9915991, -2.375263)
+
+[node name="Camera" type="Camera3D" parent="CameraController" unique_id=1843932101]
+
+[node name="BuilderController" type="Node3D" parent="." unique_id=1099927626 node_paths=PackedStringArray("canvas_layer", "selector", "selector_container", "view_camera", "point_indicator_control", "point_indicator", "context_menu")]
 script = ExtResource("3_0uv0p")
-canvas_layer = NodePath("../CameraController/CanvasLayer")
+canvas_layer = NodePath("../CanvasLayer")
 reward_indicator = ExtResource("3_pdh0q")
-structures = Array[ExtResource("4_b3faq")]([SubResource("Resource_7c4bj"), SubResource("Resource_pdh0q")])
+structures = Array[ExtResource("4_b3faq")]([SubResource("Resource_7c4bj"), SubResource("Resource_pdh0q"), SubResource("Resource_rm3lh"), SubResource("Resource_jgbtq"), SubResource("Resource_4q8dg")])
 selector = NodePath("../Selector")
 selector_container = NodePath("../CameraController/SelectorContainer")
 view_camera = NodePath("../CameraController/Camera")
-point_indicator_control = NodePath("../CameraController/CanvasLayer/Control")
-point_indicator = NodePath("../CameraController/CanvasLayer/Control/fillProgress")
+point_indicator_control = NodePath("../CanvasLayer/GameUI/PointIndicatorContro")
+point_indicator = NodePath("../CanvasLayer/GameUI/PointIndicatorContro/fillProgress")
+context_menu = NodePath("../CanvasLayer/GameUI/ContextMenu")
 
 [node name="GridMap" type="GridMap" parent="." unique_id=623106909]
 mesh_library = SubResource("MeshLibrary_b3faq")
@@ -176,6 +724,9 @@ mesh = SubResource("PlaneMesh_h1bdy")
 transform = Transform3D(-0.25, 0, -3.774895e-08, 0, 0.25, 0, 3.774895e-08, 0, -0.25, 0.3, 0, 0.3)
 mesh = SubResource("PlaneMesh_h1bdy")
 
-[node name="grass_tress_002" parent="." unique_id=10478127 instance=ExtResource("5_b3faq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6298189, 0, 3.2658193)
-visible = false
+[connection signal="pressed" from="CanvasLayer/GameUI/Menu/HBoxContainer/Button" to="BuilderController" method="select_structure_by_index" binds= [0]]
+[connection signal="pressed" from="CanvasLayer/GameUI/Menu/HBoxContainer/Button2" to="BuilderController" method="select_structure_by_index" binds= [1]]
+[connection signal="pressed" from="CanvasLayer/GameUI/Menu/HBoxContainer/Button3" to="BuilderController" method="select_structure_by_index" binds= [2]]
+[connection signal="pressed" from="CanvasLayer/GameUI/Menu/HBoxContainer/Button4" to="BuilderController" method="select_structure_by_index" binds= [3]]
+[connection signal="pressed" from="CanvasLayer/GameUI/Menu/HBoxContainer/Button5" to="BuilderController" method="select_structure_by_index" binds= [4]]
+[connection signal="pressed" from="CanvasLayer/TopMenu/Button" to="CanvasLayer/GameUI/Menu/HBoxContainer/Button" method="exit_game"]

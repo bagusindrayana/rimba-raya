@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cs778ahgo8qir"]
+
+[ext_resource type="PackedScene" uid="uid://bex7jkxsach1" path="res://scenes/objects/grass.tscn" id="1_xm2u8"]
+[ext_resource type="Script" uid="uid://bjcgahbfdarr" path="res://scripts/PlaceableObject.gd" id="1_y4piw"]
+[ext_resource type="PackedScene" uid="uid://sbmttsst5127" path="res://models/kenney_nature-kit/glb/stone_largeB.glb" id="3_nj0n2"]
+[ext_resource type="PackedScene" uid="uid://dctvln0smt4hx" path="res://models/kenney_nature-kit/glb/stone_largeC.glb" id="4_vfysh"]
+[ext_resource type="PackedScene" uid="uid://3nkp2sfo0vkm" path="res://models/kenney_nature-kit/glb/stone_largeD.glb" id="5_ibcl1"]
+[ext_resource type="PackedScene" uid="uid://b45qik613fa1n" path="res://models/kenney_nature-kit/glb/stone_smallA.glb" id="8_10byc"]
+[ext_resource type="PackedScene" uid="uid://d2b7605iqx2mn" path="res://models/kenney_nature-kit/glb/stone_smallB.glb" id="9_tgg7r"]
+[ext_resource type="PackedScene" uid="uid://cfqvg0by3qn52" path="res://models/kenney_nature-kit/glb/stone_smallC.glb" id="10_a8l2w"]
+[ext_resource type="PackedScene" uid="uid://btasn0f26c48u" path="res://models/kenney_nature-kit/glb/stone_smallD.glb" id="11_lm7oa"]
+[ext_resource type="PackedScene" uid="uid://cw7cfapo4mcf0" path="res://models/kenney_nature-kit/glb/stone_smallE.glb" id="12_qy4k7"]
+[ext_resource type="PackedScene" uid="uid://qjeofbrd3md1" path="res://models/kenney_nature-kit/glb/stone_smallF.glb" id="13_p7xe6"]
+[ext_resource type="PackedScene" uid="uid://bdhwxj6byokn6" path="res://models/kenney_nature-kit/glb/stone_smallG.glb" id="17_c60kt"]
+[ext_resource type="PackedScene" uid="uid://372si6hh08r7" path="res://models/kenney_nature-kit/glb/stone_smallH.glb" id="18_8yo64"]
+[ext_resource type="PackedScene" uid="uid://bjh832meawqna" path="res://models/kenney_nature-kit/glb/stone_smallI.glb" id="19_o7utm"]
+[ext_resource type="PackedScene" uid="uid://c1m0smdba25ip" path="res://models/kenney_nature-kit/glb/stone_smallTopA.glb" id="20_qi6f0"]
+[ext_resource type="PackedScene" uid="uid://165nind8r4v7" path="res://models/kenney_nature-kit/glb/stone_smallTopB.glb" id="21_yqrcu"]
+
+[node name="grass_rock" type="Node3D" unique_id=10478127]
+script = ExtResource("1_y4piw")
+variant_objects = Array[PackedScene]([ExtResource("3_nj0n2"), ExtResource("4_vfysh"), ExtResource("5_ibcl1"), ExtResource("8_10byc"), ExtResource("9_tgg7r"), ExtResource("10_a8l2w"), ExtResource("11_lm7oa"), ExtResource("12_qy4k7"), ExtResource("13_p7xe6"), ExtResource("17_c60kt"), ExtResource("18_8yo64"), ExtResource("19_o7utm"), ExtResource("20_qi6f0"), ExtResource("21_yqrcu")])
+
+[node name="grass" parent="." unique_id=88163756 instance=ExtResource("1_xm2u8")]
+
+[node name="object_place" type="Node3D" parent="." unique_id=214560861]

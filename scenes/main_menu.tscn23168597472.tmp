@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://w2h2kd05odlv"]
+
+[ext_resource type="Script" uid="uid://crya3p8s71v0y" path="res://scripts/animations/ProceduralGridMap.gd" id="1_l6cm7"]
+[ext_resource type="PackedScene" uid="uid://cx1yiupvco4nu" path="res://scenes/objects/placeable/grass_log_flower_001.tscn" id="2_rtw2f"]
+[ext_resource type="PackedScene" uid="uid://dlxbkbpxkoijj" path="res://scenes/objects/placeable/grass_mushroom_001.tscn" id="3_oa1go"]
+[ext_resource type="PackedScene" uid="uid://cs778ahgo8qir" path="res://scenes/objects/placeable/grass_rock.tscn" id="4_tbmy8"]
+[ext_resource type="PackedScene" uid="uid://y5bjh0jg37e" path="res://scenes/objects/placeable/grass_tree_001.tscn" id="5_jk1qb"]
+[ext_resource type="PackedScene" uid="uid://dgr1juidxa7gx" path="res://scenes/objects/placeable/water_river_tile.tscn" id="6_5dd4i"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rtw2f"]
+
+[sub_resource type="Sky" id="Sky_oa1go"]
+sky_material = SubResource("ProceduralSkyMaterial_rtw2f")
+
+[sub_resource type="Environment" id="Environment_tbmy8"]
+background_mode = 2
+sky = SubResource("Sky_oa1go")
+
+[node name="MainMenu" type="Node3D" unique_id=378592238]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1558699481]
+transform = Transform3D(1, 0, 0, 0, 0.37772772, 0.92591673, 0, -0.92591673, 0.37772772, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1893431346]
+environment = SubResource("Environment_tbmy8")
+
+[node name="ProceduralGrid" type="Node3D" parent="." unique_id=1653946634]
+script = ExtResource("1_l6cm7")
+object_scenes = Array[PackedScene]([ExtResource("2_rtw2f"), ExtResource("3_oa1go"), ExtResource("4_tbmy8"), ExtResource("5_jk1qb"), ExtResource("6_5dd4i")])
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=938635764]
+transform = Transform3D(1, 0, 0, 0, 0.91416204, 0.40534905, 0, -0.40534905, 0.91416204, 0, 4.8052588, 5.792412)

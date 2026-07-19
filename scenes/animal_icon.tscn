@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://c8m3aw8lyuln1"]
+
+[ext_resource type="Texture2D" uid="uid://4ph3likbftlk" path="res://ui/kenney_ui-pack-pixel-adventure/Tiles/Large tiles/Thin outline/tile_0065.png" id="1_nsyab"]
+[ext_resource type="Texture2D" uid="uid://7q4jvin3bps6" path="res://models/kenney_cube-pets_1.0/Previews/animal-parrot.png" id="2_pa4rt"]
+
+[node name="AnimalIcon" type="Control" unique_id=808708031]
+clip_contents = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_default_cursor_shape = 2
+
+[node name="Button" type="Button" parent="." unique_id=2027403742]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="BGTexture" type="TextureRect" parent="Button" unique_id=1867731895]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_nsyab")
+
+[node name="IconTexture" type="TextureRect" parent="Button" unique_id=2051493006]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = -7.0
+offset_right = 7.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pa4rt")
+flip_h = true

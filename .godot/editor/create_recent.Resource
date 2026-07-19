@@ -1,2 +1,3 @@
+ShaderMaterial
 MeshLibrary
 Resource

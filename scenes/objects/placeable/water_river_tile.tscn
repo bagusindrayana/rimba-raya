@@ -1,7 +1,14 @@
 [gd_scene format=3 uid="uid://dgr1juidxa7gx"]
 
+[ext_resource type="Script" uid="uid://dyc7kfu5hmrkv" path="res://scripts/WaterPond.gd" id="1_8r3sv"]
 [ext_resource type="PackedScene" uid="uid://hkp1ywwqeonn" path="res://models/kenney_nature-kit/glb/ground_riverTile.glb" id="1_xu5lt"]
+[ext_resource type="PackedScene" uid="uid://dlcsj7uli0nxr" path="res://scenes/objects/animal_deer_2.tscn" id="2_ebvll"]
+[ext_resource type="PackedScene" uid="uid://bqi2bw8ppbmlq" path="res://scenes/objects/animal_fox_2.tscn" id="3_y6nhq"]
+[ext_resource type="PackedScene" uid="uid://msm8tlcba6qj" path="res://scenes/objects/animal_parrot_2.tscn" id="4_y6nhq"]
 
 [node name="water_river_tile" type="Node3D" unique_id=2024735005]
+script = ExtResource("1_8r3sv")
+animals_prefabs = Array[PackedScene]([ExtResource("4_y6nhq"), ExtResource("2_ebvll"), ExtResource("3_y6nhq")])
+metadata/water_pond = true
 
 [node name="ground_riverTile2" parent="." unique_id=464982138 instance=ExtResource("1_xu5lt")]
