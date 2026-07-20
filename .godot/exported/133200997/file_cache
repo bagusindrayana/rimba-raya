@@ -13,6 +13,6 @@ res://scenes/animal_icon.tscn::8885d3c6d7ef7ae3c09d7a016c26ebce::1784440989::res
 res://scenes/main_menu.tscn::60d5eae1ae672380a4b94e11e69cc686::1784441862::res://.godot/exported/133200997/export-ea5c6ad4629af728dc514cefde332394-main_menu.scn
 res://scenes/splash_screen.tscn::52eb0db17e68b7608b87da067e7526cb::1784439187::res://.godot/exported/133200997/export-012677d704e3d1ec9701ea04a5d91151-splash_screen.scn
 res://scenes/reward_indicator.tscn::70da64c70a159d7561b35c1950ad49f1::1784381597::res://.godot/exported/133200997/export-4eb357e5873215df289d43569f401fcb-reward_indicator.scn
-res://scenes/World.tscn::5888e8eaffabcc692b81cf09ac9ec6b4::1784441090::res://.godot/exported/133200997/export-57a8a85058368be1f5628ef4b8140bf5-World.scn
+res://scenes/World.tscn::ba9f2e3e86cbc580b58052a4a1639022::1784446169::res://.godot/exported/133200997/export-57a8a85058368be1f5628ef4b8140bf5-World.scn
 res://shaders/2d_border_shader.tres::2e9dfc3493ccf935742dcc01d3bc0f97::1784381437::res://.godot/exported/133200997/export-ace14ebb3bdb213edb5e2b875d2798da-2d_border_shader.res
 res://new_mesh_library.tres::d2bff5afb4be4c0b6a4fe575306d17f3::1784344609::res://.godot/exported/133200997/export-20e40582c8e909e3a86bc0af36ad098b-new_mesh_library.res

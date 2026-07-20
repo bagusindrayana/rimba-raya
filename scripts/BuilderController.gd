@@ -66,9 +66,10 @@ func _process(delta):
 		#return
 	
 	# Controls
-	if Input.is_action_just_pressed("rotate"):
-		action_rotate() # Rotates selection 90 degrees
-	action_structure_toggle() # Toggles between structures
+	#if Input.is_action_just_pressed("rotate"):
+		#action_rotate() # Rotates selection 90 degrees
+		#pass
+	# action_structure_toggle() # Toggles between structures
 	
 	#action_save() # Saving
 	#action_load() # Loading
@@ -96,8 +97,9 @@ func _process(delta):
 	#action_demolish(gridmap_position)
 	
 func _unhandled_input(event):
-	action_build(current_pos)
-	action_demolish(current_pos)
+	#action_build(current_pos)
+	#action_demolish(current_pos)
+	pass
 	
 
 #func _input(event: InputEvent) -> void:
