@@ -97,8 +97,8 @@ func _process(delta):
 	#action_demolish(gridmap_position)
 	
 func _unhandled_input(event):
-	#action_build(current_pos)
-	#action_demolish(current_pos)
+	action_build(current_pos)
+	action_demolish(current_pos)
 	pass
 	
 
